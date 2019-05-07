@@ -1,8 +1,10 @@
 # coding: utf-8
 
+from __future__ import absolute_import
+
 import base64
 
-from flask.ext.oauthlib import client
+from flask_oauthlib import client
 from werkzeug import urls
 import flask
 
@@ -19,8 +21,8 @@ reddit_config = dict(
   access_token_url='https://ssl.reddit.com/api/v1/access_token',
   authorize_url='https://ssl.reddit.com/api/v1/authorize',
   base_url='https://oauth.reddit.com/api/v1/',
-  consumer_key=model.Config.get_master_db().reddit_client_id,
-  consumer_secret=model.Config.get_master_db().reddit_client_secret,
+  consumer_key=config.CONFIG_DB.reddit_client_id,
+  consumer_secret=config.CONFIG_DB.reddit_client_secret,
   request_token_params={'scope': 'identity', 'state': util.uuid()},
 )
 

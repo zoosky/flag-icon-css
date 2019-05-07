@@ -1,30 +1,34 @@
 # coding: utf-8
 
-from flask.ext import wtf
 import flask
+import flask_wtf
 import wtforms
 
 import auth
 import i18n
 import util
+import versions
 
 from main import app
 
+
 TESTS = [
-  'responsive',
-  'grid',
-  'heading',
-  'paragraph',
-  'font',
-  'table',
-  'form',
-  'button',
   'alert',
   'badge',
-  'label',
+  'button',
   'filter',
+  'font',
+  'form',
+  'grid',
+  'heading',
+  'label',
+  'pageres',
   'pagination',
+  'paragraph',
+  'responsive',
   'social',
+  'table',
+  'versions',
 ]
 
 
@@ -75,7 +79,7 @@ class TestForm(i18n.Form):
   )
   public = wtforms.StringField('Public Key', [wtforms.validators.optional()])
   private = wtforms.StringField('Private Key', [wtforms.validators.optional()])
-  recaptcha = wtf.RecaptchaField()
+  recaptcha = flask_wtf.RecaptchaField()
 
 
 @app.route('/admin/test/<test>/', methods=['GET', 'POST'])
@@ -95,5 +99,6 @@ def admin_test(test=None):
     form=form,
     test=test,
     tests=TESTS,
+    versions=versions.get_versions(),
     back_url_for='admin_test' if test else None,
   )

@@ -1,6 +1,8 @@
 # coding: utf-8
 
-from flask.ext.babel import gettext as __
+from __future__ import absolute_import
+
+from flask_babel import gettext as __
 import flask
 
 import auth
@@ -10,13 +12,15 @@ import util
 
 from main import app
 
+
 twitter_config = dict(
   access_token_url='https://api.twitter.com/oauth/access_token',
-  authorize_url='https://api.twitter.com/oauth/authorize',
+  authorize_url='https://api.twitter.com/oauth/authenticate',
   base_url='https://api.twitter.com/1.1/',
   consumer_key=config.CONFIG_DB.twitter_consumer_key,
   consumer_secret=config.CONFIG_DB.twitter_consumer_secret,
   request_token_url='https://api.twitter.com/oauth/request_token',
+  signature_method='HMAC-SHA1',
 )
 
 twitter = auth.create_oauth_app(twitter_config, 'twitter')

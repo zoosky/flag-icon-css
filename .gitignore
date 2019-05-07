@@ -1,11 +1,11 @@
-
-
-*.mo
-*.pyc
-*.pyo
 .DS_Store
 .git*
 .hg*
+.idea
+.vscode
+*.mo
+*.pyc
+*.pyo
 bower_components
 main/index.yaml
 main/lib
@@ -15,4 +15,7 @@ main/static/ext
 main/static/min
 main/translations/messages.pot
 node_modules
+npm-debug.log
+package-lock.json
 temp/
+yarn-error.log
