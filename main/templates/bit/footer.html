@@ -6,7 +6,7 @@
       <li><a href="https://twitter.com/lipis" onclick="_gaq.push(['_trackEvent', 'exit', 'footer', 'Twitter']);"><span class="fa fa-twitter"></span> Twitter</a></li>
     </ul>
     <p>
-      &copy; 2019 - {{config.CONFIG_DB.brand_name}}
+      &copy; {{datetime.today().year}} - {{config.CONFIG_DB.brand_name}}
       # if current_user.admin
         | {{_('Version')}}: {{config.CURRENT_VERSION_NAME}}
         (<time datetime="{{config.CURRENT_VERSION_DATE}}">{{config.CURRENT_VERSION_DATE}}</time>)
@@ -14,6 +14,5 @@
           | <a class='api-url' href="{{api_url}}{% if request.query_string %}?{{request.query_string}}{% endif %}" target="_blank" data-api-url="{{api_url}}">{{_('View in JSON')}}</a>
         # endif
       # endif
-    </p>
   </div>
 </footer>
